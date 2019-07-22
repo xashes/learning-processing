@@ -1,16 +1,22 @@
 new p5();
 
+let cars = [];
+
 function setup() {
     let myCanvas=createCanvas(1000, 800);
     myCanvas.parent('p5Container');
-    car = new Car(color(127), 0, 100, 6);
+    for (var i = 0; i < 100; i++) {
+        cars[i] = new Car(color(i*2), 0, i*20, i);
+    }
 }
 
 
 function draw() {
-    background(51);
-    car.move();
-    car.display();
+    background(255);
+    for (var i = 0; i < cars.length; i++) {
+        cars[i].move();
+        cars[i].display();
+    }
 }
 
 class Car {
