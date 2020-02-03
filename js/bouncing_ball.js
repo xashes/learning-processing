@@ -1,9 +1,14 @@
 new p5();
 
-let x = 15;
-let xspeed = 10;
-let y = 100;
-let yspeed = 6;
+let ball = {
+    x : ball.diameter/2,
+    y : 100,
+    diameter : 30,
+    speed : {
+        x : 10,
+        y : 6
+    }
+};
 
 function setup() {
     let myCanvas=createCanvas(1000, 800);
@@ -15,13 +20,13 @@ function draw() {
     background(255);
     fill(255, 0, 255);
     noStroke();
-    ellipse(x, y, 30, 30);
-    if (x > (width - 15) || x < 15) {
-        xspeed = -xspeed;
+    ellipse(ball.x, ball.y, ball.diameter, ball.diameter);
+    if (ball.x > (width - ball.diameter/2) || ball.x < ball.diameter/2) {
+        ball.speed.x = -ball.speed.x;
     }
-    if (y < 15 || y > height - 15) {
-        yspeed = - yspeed;
+    if (ball.y < ball.diameter/2 || ball.y > height - ball.diameter/2) {
+        ball.speed.y = - ball.speed.y;
     }
-    x += xspeed;
-    y += yspeed;
+    x += ball.speed.x;
+    y += ball.speed.y;
 }
